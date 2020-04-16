@@ -1,0 +1,12 @@
+docker run --rm -i \
+--gpus all \
+--device=/dev/nvidiactl \
+--device=/dev/nvidia-uvm \
+--device=/dev/nvidia0 \
+--volume nvidia_driver_384.66:/usr/local/nvidia:ro \
+--env DISPLAY=unix$DISPLAY  \
+--privileged --volume $XAUTH:/root/.Xauthority \
+--volume /tmp/.X11-unix:/tmp/.X11-unix \
+--volume $PWD:/script \
+--name self_drive_dev \
+-t self_drive:dev bash
